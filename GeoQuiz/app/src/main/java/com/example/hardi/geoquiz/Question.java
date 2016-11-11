@@ -21,12 +21,8 @@ public class Question
     public int getmTextResId() {
         return mTextResId;
     }
-
     public void setmAnswerTrue(boolean mAnswerTrue) {
         this.mAnswerTrue = mAnswerTrue;
     }
-
-    public boolean ismAnswerTrue() {
-        return mAnswerTrue;
-    }
+    public boolean ismAnswerTrue() {return mAnswerTrue;}
 }

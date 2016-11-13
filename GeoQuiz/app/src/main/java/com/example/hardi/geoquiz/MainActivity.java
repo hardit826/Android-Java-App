@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mtrueButton;
     private Button mfalseButton;
-    private Button mnextButton;
+    private ImageButton mnextButton;
+    private ImageButton mprevButton;
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[]
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mtrueButton = (Button) findViewById(R.id.true_button);
         mfalseButton = (Button)findViewById(R.id.false_button);
-        mnextButton = (Button)findViewById(R.id.next_button);
+        mnextButton = (ImageButton)findViewById(R.id.next_button);
+        mprevButton = (ImageButton)findViewById(R.id.prev_button);
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
         UpdateQuestion();
         mtrueButton.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex+1)% mQuestionBank.length;
+                UpdateQuestion();
+            }
+        });
+        mprevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex+mQuestionBank.length-1)%mQuestionBank.length;
                 UpdateQuestion();
             }
         });
